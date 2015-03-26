@@ -1,6 +1,6 @@
 close all; clc; clear all;
 %set(gca,'YDir','normal');
-ny=10; %etamber of y lines
+ny=40; %etamber of y lines
 nx=20; %etamber of x lines
 npml=10;
 
@@ -19,9 +19,14 @@ ymid=(ymax+ymin)/2;
 % ymax=ymax+etapmls;
 
 x=linspace(xmin,xmax,nx+1);
-y=sin(2*pi*x/max(x));
+%argument of sin
+phi=2*pi*x/max(x);
+%Bottom part
+y=sin(phi);
 y=ymid+y;
-y1=-ymid-sin(2*pi*x/max(x)-pi);
+%Top part, shifted by pi to be in phase
+y1=-ymid-sin(phi-pi);
+
 %Phys. domain
 ksi=zeros(nx+1,ny+1);
 eta=zeros(nx+1,ny+1);
